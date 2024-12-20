@@ -50,7 +50,7 @@ const sessionConfig = {
   saveUninitialized: false,
   cookie: {
     httpOnly: true, // Prevents client-side script access
-    secure: false, // Only use secure cookies in production
+    secure: process.env.NODE_ENV === "production"?true:false, // Only use secure cookies in production
     expires: Date.now() + 1000 * 60 * 60 * 24 * 7, // 7-day expiry
     maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
   },
