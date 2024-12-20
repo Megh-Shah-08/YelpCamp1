@@ -34,7 +34,7 @@ const store = MongoStore.create({
   mongoUrl: process.env.MONGO_URI, // Updated from `url` to `mongoUrl`
   touchAfter: 24 * 60 * 60, // Prevents session refresh within 24 hours
   crypto: {
-    secret: process.env.SECRET || "a_secure_long_random_secret", // Secure secret
+    secret: "a_secure_long_random_secret", // Secure secret
   },
 });
 
@@ -45,12 +45,12 @@ store.on("error", function (e) {
 const sessionConfig = {
   store: store,
   name: "sample", // Custom session cookie name
-  secret: process.env.SECRET || "a_secure_long_random_secret",
+  secret: "a_secure_long_random_secret",
   resave: false,
   saveUninitialized: false,
   cookie: {
     httpOnly: true, // Prevents client-side script access
-    secure: process.env.NODE_ENV === "production", // Only use secure cookies in production
+    secure: false, // Only use secure cookies in production
     expires: Date.now() + 1000 * 60 * 60 * 24 * 7, // 7-day expiry
     maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
   },
