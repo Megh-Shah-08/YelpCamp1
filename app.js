@@ -19,9 +19,8 @@ const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 const MongoStore = require("connect-mongo");
 
-// if (process.env.NODE_ENV !== "production") {
-  require('dotenv').config();
-// }
+require('dotenv').config();
+
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.json());
