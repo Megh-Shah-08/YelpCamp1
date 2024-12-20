@@ -126,9 +126,9 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
-  console.log(req.user);
+  console.log("middleware check",req.user);
   res.locals.currentUser = req.user;
-  console.log(currentUser);
+  console.log("current user : "+res.locals.currentUser);
   res.locals.success = req.flash('success');
   res.locals.error = req.flash('error');
   next();
