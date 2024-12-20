@@ -29,6 +29,7 @@ module.exports.renderLoginForm = (req, res) => {
 
 //login the user
 module.exports.loginUser = async (req, res) => {
+    console.log(req.isAuthenticated());
     req.flash('success', "Welcome Back!");
     const redirectUrl = res.locals.returnTo || '/campgrounds';
     delete req.session.returnTo;
